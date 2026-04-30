@@ -13,10 +13,10 @@ export default function ChaosController() {
         <div>
           <h1 className="text-xl font-bold text-text-primary flex items-center gap-2">
 
-            Chaos Controller
+            Market Stress Simulator
           </h1>
           <p className="text-sm text-text-muted mt-1">
-            Dev-only fault injection panel • Changes reflect on Health Monitor in real-time
+            Simulate market turbulence • Changes reflect on Health Monitor in real-time
           </p>
         </div>
         <button

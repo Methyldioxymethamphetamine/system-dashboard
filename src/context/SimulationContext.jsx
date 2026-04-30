@@ -12,6 +12,13 @@ const DEFAULT_STATE = {
   transcription: { status: 'active' },
   sentimentFeedback: [],
   history: [],
+  marketStress: 20,
+  crmStats: {
+    activeLeads: 1245,
+    csat: 94,
+    churnRisk: 12,
+    pipelineHealth: 1.2,
+  }
 };
 
 function loadPersistedState() {
@@ -83,6 +90,10 @@ export function SimulationProvider({ children }) {
     setState(prev => ({ ...prev, sentimentFeedback: [] }));
   }, []);
 
+  const setMarketStress = useCallback((value) => {
+    setState(prev => ({ ...prev, marketStress: value }));
+  }, []);
+
   const appendHistory = useCallback((dataPoint) => {
     setState(prev => ({
       ...prev,
@@ -102,6 +113,7 @@ export function SimulationProvider({ children }) {
     setLatency,
     addSentiment,
     clearSentiments,
+    setMarketStress,
     appendHistory,
     resetSimulation,
   };

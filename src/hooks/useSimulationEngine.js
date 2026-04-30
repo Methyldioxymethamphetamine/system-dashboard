@@ -40,7 +40,7 @@ export function getHealthStatus(apiName, metrics) {
 }
 
 export function useSimulationEngine() {
-  const { state, appendHistory } = useSimulation();
+  const { state, appendHistory, addSentiment } = useSimulation();
   const stateRef = useRef(state);
 
   useEffect(() => {
@@ -71,7 +71,18 @@ export function useSimulationEngine() {
         audioStatus: getHealthStatus('audioApi', s.audioApi),
         dbStatus: getHealthStatus('databaseApi', s.databaseApi),
         transcriptionStatus: getHealthStatus('transcription', s.transcription),
+        churnRisk: Math.max(2, Math.min(95, s.marketStress * 0.8 + (Math.random() * 5))),
       };
+
+      if (Math.random() < 0.1) {
+        if (s.marketStress > 70) {
+          const complaints = ['Terrible call drops!', 'Video lag is unbearable', 'Fix screenshare lag!', 'Keep disconnecting'];
+          addSentiment(complaints[Math.floor(Math.random() * complaints.length)]);
+        } else if (s.marketStress < 30) {
+          const positive = ['Crystal clear audio', 'Video is smooth today', 'Great call quality', 'No issues at all'];
+          addSentiment(positive[Math.floor(Math.random() * positive.length)]);
+        }
+      }
 
       appendHistory(dataPoint);
     }, 2000);

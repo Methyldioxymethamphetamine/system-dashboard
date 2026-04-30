@@ -55,6 +55,13 @@ const CHART_CONFIGS = {
       { dataKey: 'videoPacketLoss', name: 'Loss %', stroke: '#f59e0b', unit: '%' },
     ],
   },
+  churn: {
+    title: 'Churn Prediction Risk',
+    subtitle: 'Dynamic churn probability driven by market stress',
+    lines: [
+      { dataKey: 'churnRisk', name: 'Risk %', stroke: '#ef4444', unit: '%' },
+    ],
+  },
 };
 
 export default function LatencyChart({ chartType = 'latency' }) {

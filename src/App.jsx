@@ -3,6 +3,7 @@ import Navbar from './components/layout/Navbar'
 import HealthDashboard from './pages/HealthDashboard'
 import ChaosController from './pages/ChaosController'
 import GeminiInsightPanel from './components/ai/GeminiInsightPanel'
+import SidebarLeadList from './components/layout/SidebarLeadList'
 import { useSimulationEngine } from './hooks/useSimulationEngine'
 
 function App() {
@@ -20,8 +21,11 @@ function App() {
         onToggleAI={() => setAiPanelOpen(true)}
       />
 
-      <main className="max-w-[1440px] mx-auto px-6 py-6">
-        {activeTab === 'health' ? <HealthDashboard /> : <ChaosController />}
+      <main className="max-w-[1440px] mx-auto px-6 py-6 flex gap-6 items-start">
+        <SidebarLeadList />
+        <div className="flex-1 min-w-0">
+          {activeTab === 'health' ? <HealthDashboard /> : <ChaosController />}
+        </div>
       </main>
 
       <GeminiInsightPanel

@@ -61,7 +61,7 @@ export default function Navbar({ activeTab, onTabChange, onToggleAI }) {
                   : 'text-text-muted hover:text-text-primary'
                   }`}
               >
-                Chaos Controller
+                Market Stress
               </button>
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function Navbar({ activeTab, onTabChange, onToggleAI }) {
             className={`flex-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-center ${activeTab === 'chaos' ? 'bg-bg-elevated text-text-primary shadow-sm' : 'text-text-muted'
               }`}
           >
-            Chaos
+            Market Stress
           </button>
         </div>
       </div>

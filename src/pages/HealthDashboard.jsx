@@ -1,7 +1,7 @@
-import StatusCard from '../components/health/StatusCard';
+import TopStatsBar from '../components/health/TopStatsBar';
 import LatencyChart from '../components/health/LatencyChart';
 import SentimentFeed from '../components/health/SentimentFeed';
-import TranscriptionStatus from '../components/health/TranscriptionStatus';
+import VoiceToCRM from '../components/health/VoiceToCRM';
 
 export default function HealthDashboard() {
   return (
@@ -20,25 +20,20 @@ export default function HealthDashboard() {
         </div>
       </div>
 
-      {/* Status Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatusCard apiName="chatApi" />
-        <StatusCard apiName="videoApi" />
-        <StatusCard apiName="audioApi" />
-        <StatusCard apiName="databaseApi" />
-      </div>
+      {/* Top Stats Bar */}
+      <TopStatsBar />
 
       {/* Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <LatencyChart chartType="latency" />
         <LatencyChart chartType="throughput" />
-        <LatencyChart chartType="packetLoss" />
+        <LatencyChart chartType="churn" />
       </div>
 
       {/* Bottom Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <SentimentFeed />
-        <TranscriptionStatus />
+        <VoiceToCRM />
       </div>
     </div>
   );

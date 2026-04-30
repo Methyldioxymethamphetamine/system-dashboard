@@ -26,17 +26,42 @@ const ZONE_COLORS = {
 };
 
 export default function LatencySlider() {
-  const { state, setLatency } = useSimulation();
+  const { state, setLatency, setMarketStress } = useSimulation();
 
   return (
     <div id="latency-sliders" className="glass-card-static p-5">
       <div className="flex items-center gap-2 mb-4">
 
-        <h3 className="text-sm font-semibold text-text-primary">Latency & Metric Sliders</h3>
+        <h3 className="text-sm font-semibold text-text-primary">Latency & Market Stress</h3>
       </div>
       <p className="text-xs text-text-muted mb-5">Adjust values to trigger threshold alerts</p>
 
       <div className="space-y-5">
+        <div className="p-4 rounded-xl border border-accent-purple/30 bg-accent-purple/5 mb-6 shadow-[0_0_15px_rgba(139,92,246,0.15)]">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm font-bold text-text-primary">Market Stress Level</span>
+            <span className="text-lg font-black font-mono text-accent-purple">
+              {state.marketStress}%
+            </span>
+          </div>
+          <input
+            type="range"
+            min={0}
+            max={100}
+            step={1}
+            value={state.marketStress}
+            onChange={(e) => setMarketStress(parseInt(e.target.value))}
+            className="w-full"
+            style={{
+              background: `linear-gradient(to right, #8b5cf6 ${state.marketStress}%, #1e293b ${state.marketStress}%)`,
+            }}
+          />
+          <div className="flex justify-between text-[10px] text-text-dim mt-1 uppercase tracking-wider font-semibold">
+            <span>Calm</span>
+            <span>Chaos</span>
+          </div>
+        </div>
+
         {SLIDERS.map(({ api, field, label, unit, min, max, thresholds, step = 1, invert }) => {
           const value = state[api][field];
           const zone = getZone(value, thresholds, invert);
