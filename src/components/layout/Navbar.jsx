@@ -55,6 +55,15 @@ export default function Navbar({ activeTab, onTabChange, onToggleAI }) {
                 Health Monitor
               </button>
               <button
+                onClick={() => onTabChange('crm')}
+                className={`px-4 py-1.5 rounded-lg text-xs font-medium transition-all ${activeTab === 'crm'
+                  ? 'bg-bg-elevated text-text-primary shadow-sm'
+                  : 'text-text-muted hover:text-text-primary'
+                  }`}
+              >
+                CRM Pipeline
+              </button>
+              <button
                 onClick={() => onTabChange('chaos')}
                 className={`px-4 py-1.5 rounded-lg text-xs font-medium transition-all ${activeTab === 'chaos'
                   ? 'bg-bg-elevated text-text-primary shadow-sm'
@@ -62,6 +71,15 @@ export default function Navbar({ activeTab, onTabChange, onToggleAI }) {
                   }`}
               >
                 Market Stress
+              </button>
+              <button
+                onClick={() => onTabChange('settings')}
+                className={`px-4 py-1.5 rounded-lg text-xs font-medium transition-all ${activeTab === 'settings'
+                  ? 'bg-bg-elevated text-text-primary shadow-sm'
+                  : 'text-text-muted hover:text-text-primary'
+                  }`}
+              >
+                Settings
               </button>
             </div>
           </div>
@@ -98,11 +116,25 @@ export default function Navbar({ activeTab, onTabChange, onToggleAI }) {
             Health
           </button>
           <button
+            onClick={() => onTabChange('crm')}
+            className={`flex-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-center ${activeTab === 'crm' ? 'bg-bg-elevated text-text-primary shadow-sm' : 'text-text-muted'
+              }`}
+          >
+            CRM
+          </button>
+          <button
             onClick={() => onTabChange('chaos')}
             className={`flex-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-center ${activeTab === 'chaos' ? 'bg-bg-elevated text-text-primary shadow-sm' : 'text-text-muted'
               }`}
           >
-            Market Stress
+            Stress
+          </button>
+          <button
+            onClick={() => onTabChange('settings')}
+            className={`flex-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-center ${activeTab === 'settings' ? 'bg-bg-elevated text-text-primary shadow-sm' : 'text-text-muted'
+              }`}
+          >
+            Config
           </button>
         </div>
       </div>
